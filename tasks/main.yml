@@ -1,9 +1,9 @@
 ---
 - name: "CAUTION: the following users will have passwordless sudo rights"
   debug: var=sudoers
-  when: sudoers is defined
+  when: sudo_users is defined
 
 - name: enable passwordless sudo
   lineinfile: dest=/etc/sudoers.d/{{item}} regexp="^{{item}}" line="{{item}} ALL=NOPASSWD:ALL" state=present create=yes
-  with_items: sudoers
-  when: sudoers is defined
+  with_items: sudo_users
+  when: sudo_users is defined
