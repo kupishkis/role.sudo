@@ -1,6 +1,6 @@
 ---
 - name: "CAUTION: the following users will have passwordless sudo rights"
-  debug: var=sudoers
+  debug: var=sudo_users
   when: sudo_users is defined
 
 - name: enable passwordless sudo
